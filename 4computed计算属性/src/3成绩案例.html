@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .b {
+        border: 1px solid black;
+        font-size: 30px;
+
+    }
+
+    .red {
+        color: red;
+    }
+</style>
+
+<div id="app">
+    <div id="box">
+        <table class="b">
+            <thead>
+            <tr>
+                <td class="b">编号</td>
+                <td class="b">学科</td>
+                <td class="b">成绩</td>
+                <td class="b">操作</td>
+            </tr>
+            </thead>
+            <tbody v-if="list.length>0">
+            <tr class="b" v-for='(item,index) in list'>
+                <td class="b">{{item.id}}</td>
+                <td class="b">{{item.subject}}</td>
+                <td class="b" :class="{red:item.score<60}">{{item.score}}</td>
+                <td class="b"><a @click.prevnet="del(item.id)" href="#">删除</a></td>
+            </tr>
+            </tbody>
+            <tbody v-else>
+            <tr>
+                <td>暂无数据</td>
+            </tr>
+
+            </tbody>
+            <tfoot>
+            <tr>
+                <td class="b">{{totalscore}}</td>
+                <td class="b">{{avgscore}}</td>
+            </tr>
+            </tfoot>
+
+        </table>
+
+    </div>
+    <br>
+    <div>
+        <span class="b">学科:</span><input type="text" placeholder="input subject" v-model.trim="subject" class="b"><br>
+        <span class="b">分数:</span><input type="text" placeholder="input score" v-model.number="score" class="b">
+        <button class="b" @click="add">提交</button>
+    </div>
+    <p>{{totalCount}}</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+
+    const vue = new Vue({
+        el: '#app',
+        data: {
+            list: [
+                {id: 1, subject: "语文", score: 80},
+                {id: 2, subject: "英语", score: 78},
+                {id: 3, subject: "数学", score: 99}
+            ],
+            subject: '',
+            score: ''
+
+
+        },
+        computed: {
+            totalscore() {
+                return this.list.reduce((sum, item) => sum + item.score, 0)
+            },
+            avgscore() {
+                if(this.list.length==0){
+                    return 0
+                }
+               return (this.totalscore/this.list.length).toFixed()
+            }
+        },
+        methods: {
+            del(id) {
+                console.log(id)
+                // 过滤掉与id相同的得到一个新数组
+                this.list = this.list.filter(item => item.id !== id)
+            }, add() {
+                if(!this.subject){
+                    return
+                }
+                if(typeof this.score!=='number'){
+                    return;
+                }
+                this.list.unshift({
+                    id: +new Date(),
+                    subject: this.subject,
+                    score: this.score
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>

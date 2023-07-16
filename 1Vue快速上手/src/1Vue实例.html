@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<!--2引包-->
+
+<body>
+<!--1.创建容器-->
+<div id="app">
+    <!--    这是Vue渲染的代码-->
+    <h1> {{msg}}</h1>
+
+    {{count}}
+</div>
+
+
+<script>
+    // 3创建Vue实例
+    // 制定配置项
+    const vue = new Vue({
+        //通过el配置选择器，指定Vue管理那个盒子
+        el: '#app',
+        //通过data提供数据
+        data: {msg: '你好', count: 666}
+    })
+</script>
+
+</body>
+</html>

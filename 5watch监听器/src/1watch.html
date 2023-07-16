@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <textarea v-model="obj.words"></textarea>
+    <textarea v-model="newText"></textarea>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    const vue = new Vue({
+        el: '#app',
+        data: {
+            // words: '',
+            obj:{
+                words:''
+            }
+        },
+        watch:{
+            // words(newValue,oldValue){
+            //     //该方法在变化后执行，一个新，一个老值
+            //     console.log(newValue+""+oldValue
+            //     )
+            //
+            // }
+            'obj.words'(newValue){
+                //该方法在变化后执行，一个新，一个老值
+         
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

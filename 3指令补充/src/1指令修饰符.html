@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<div id="app">
+    <h3>按键修饰符</h3>
+    回车触发：<input type="text" v-model="text" @keyup.enter="enter">
+    <h3>v-model修饰符</h3>
+    去除空格：<input type="text" v-model.trim="text2" @keyup.enter="enter">
+    转数字：<input type="text" v-model.number="text3" @keyup.enter="enter">
+    <h3>事件修饰符</h3>
+    阻止冒泡:冒泡就是子盒子点击 父盒子自动触发
+    <div style="height: 100px;width: 100px;background-color: red" @click="onfather">
+        <div style="height: 50px;width: 50px;background-color: yellow"  @click.stop="onson">儿子</div>
+    </div>
+    <a @click.prevent href="https://www.bilibili.com/">阻止默认操作</a>
+</div>
+
+
+<script>
+
+    const vue = new Vue({
+        el: '#app',
+        data: {
+            text: "",
+            text2: "",
+            text3: ""
+
+
+        },
+        methods: {
+            enter() {
+                console.log(vue.text)
+                console.log(vue.text2)
+                console.log(vue.text3)
+            },
+            fn(){
+                console.log('123')
+            },
+            onfather(){
+                console.log("父亲被点击")
+            },
+
+            onson(){
+                console.log("儿子被点击")
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

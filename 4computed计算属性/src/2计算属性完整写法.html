@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .n {
+        font-size: 40px;
+    }
+</style>
+
+<div id="app">
+    <span class="n">姓:</span>
+    <input type="text" v-model="firstname">
+    <span class="n">+名:</span>
+    <input type="text" v-model="scoendname">
+    <span class="n">=全名</span>
+    <input type="text" v-model="fullname">
+
+    <button @click="rename">改名卡</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+
+    const vue = new Vue({
+        el: '#app',
+        data: {
+            firstname: "张",
+            scoendname: "飞",
+
+        },
+        computed: {
+            fullname: {
+                //计算属性完整的写法 get获取值  set 设置值
+                get() {
+                    return this.firstname + this.scoendname
+                },
+                set(value) {
+                    console.log(value)
+                    this.firstname = value.slice(0, 1)
+                    this.scoendname = value.slice(1)
+                }
+            }
+        },
+        methods: {
+            rename() {
+                this.fullname = "吕布"
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    ul {
+        display: flex;
+        border: 1px solid #ccc;
+    }
+
+    li {
+        margin-right: 10px;
+        padding: 5px;
+
+    }
+
+    .active {
+        background-color: red;
+    }
+
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<div id="app">
+    <ul>
+        <li v-for="(item,index) in list"><a @click="activeIndex=index" href="#" :class="{active:index==activeIndex}">{{item.name}}</a></li>
+    </ul>
+
+</div>
+
+
+<script>
+
+    const vue = new Vue({
+        el: '#app',
+        data: {
+            activeIndex:1,
+            list: [
+                {id: 1, name: "京东秒杀"},
+                {id: 2, name: "每日秒杀"},
+                {id: 3, name: "品类秒杀"}
+            ]
+        },
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<div id="app">
+    <button @click="fn">显示or隐藏</button>
+    <h1 v-show="flag">李浩鹏</h1>
+</div>
+
+
+<script>
+
+    const vue = new Vue({
+        //通过el配置选择器，指定Vue管理那个盒子
+        el: '#app',
+        //通过data提供数据
+        data: {flag: true},
+        methods: {
+            fn() {
+                console.log("method事件")
+                vue.flag = !vue.flag
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<div id="app">
+    <h3>v-model</h3>
+    用户名：<input type="text" v-model="username"><br>
+    性别:男<input v-model="radio" type="radio" value="1" name="radio">
+    女<input name="radio" v-model="radio" type="radio" value="2"><br>
+    职业：
+    <select v-model="selects">
+        <option value="1">学生</option>
+        <option value="2">老师</option>
+        <option value="3">家长</option>
+    </select>
+    <textarea v-model="area"></textarea>
+</div>
+
+
+<script>
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            username: "",
+            radio: ""
+            , selects: "",
+            area:""
+        },
+
+    })
+</script>
+</body>
+</html>

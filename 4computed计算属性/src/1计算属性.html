@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .b {
+        border: 1px solid black;
+    }
+</style>
+
+<div id="app">
+    <div id="box">
+        <table class="b">
+            <tr class="b" v-for='(item,index) in list'>
+                <td class="b">{{item.name}}</td>
+                <td class="b">{{item.num}}</td>
+            </tr>
+        </table>
+
+    </div>
+    <p>{{totalCount}}</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+
+    const vue = new Vue({
+        el: '#app',
+        data: {
+            list: [
+                {id: 1, name: "篮球", num: 1},
+                {id: 2, name: "羽毛球", num: 2},
+                {id: 3, name: "乒乓球", num: 4}
+
+            ]
+
+        },
+        computed: {
+            totalCount() {
+                // 需求：对this,1ist数组里面的num进行求和→reduce
+                let total=this.list.reduce((sum,item)=>sum+item.num,0)
+                return total
+            }
+        },
+    })
+</script>
+</body>
+</html>
